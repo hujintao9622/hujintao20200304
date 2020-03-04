@@ -1,0 +1,16 @@
+start  事件:按下抬起滑动等
+通过dispachTouchEvent分发事件
+
+activity     dispachTouchEvent                                onTouchEvent
+
+通过onInterceptTouchEvent 拦截事件  返回false 向下分发 返回true不想下分发
+
+ViewGroup    dispachTouchEvent     onInterceptTouchEvent     onTouchEvent
+
+通过onTouchEvent消费事件,返回true 本层onTouchEvent消耗，否则返回上一层的onTouchEvent
+
+view     dispachTouchEvent                                onTouchEvent
+如果中间消费或拦截了事件，则事件不会向下传递
+
+//解决事件监听
+通过事件的监听，判断滑动页面的下标，满足条件就返回false，就会取消事件
